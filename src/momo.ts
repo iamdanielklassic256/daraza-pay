@@ -21,7 +21,7 @@ export class Controller {
         const api_key = this.apiKey;
         const amount = this.amount;
         const phone_number = this.phone;
-        const apiUrl = `/api/request_to_pay/`;
+        const apiUrl = `https://daraza.net/api/request_to_pay/`;
         const csrfToken = (document.head.querySelector("[name~=csrf_token][content]") as HTMLMetaElement).content;
         console.log(csrfToken, 'csrfToken');
 
