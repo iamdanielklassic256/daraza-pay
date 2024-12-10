@@ -22,8 +22,8 @@ export class Controller {
         const apiUrl = `https://daraza.net/api/request_to_pay/`;
         
         // Check for CSRF token, with fallback
-        const csrfToken = (document.head.querySelector("[name~=csrf_token][content]") as HTMLMetaElement)?.content || '';
-        console.log(csrfToken, 'csrfToken');
+        // const csrfToken = (document.head.querySelector("[name~=csrf_token][content]") as HTMLMetaElement)?.content || '';
+        // console.log(csrfToken, 'csrfToken');
 
         const data = {
             method: this.method,
@@ -35,7 +35,6 @@ export class Controller {
         const requestOptions = {
             method: "POST",
             headers: {
-                "X-CSRF-Token": csrfToken,
                 'Authorization': `Api-Key ${api_key}`,
                 "Content-Type": "application/json",
             },

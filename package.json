@@ -1,6 +1,6 @@
 {
   "name": "daraza-payment",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "this is mtn momo payment api for daraza gateway",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -20,10 +20,11 @@
   "author": "Okumu Daniel Comboni",
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "@types/request": "^2.48.12",
     "@types/uuid": "^9.0.8",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5"
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
     "ansi-regex": "^6.0.1",
