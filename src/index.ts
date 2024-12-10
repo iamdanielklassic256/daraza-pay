@@ -19,15 +19,16 @@ export async function makeTransaction({
 
     try {
         const response = await app.requestToPay();
+        
+        // Optional: If you want to get transaction status immediately
         // const status = await app.getTransactionStatus(response.referenceId);
 
         return { 
-			response, 
-			// status 
-		};
+            response, 
+            // status 
+        };
     } catch (error) {
-        console.error("Error:", error);
+        console.error("Transaction Error:", error);
         throw error;
     }
 }
-

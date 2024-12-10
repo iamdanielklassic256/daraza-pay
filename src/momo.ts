@@ -15,14 +15,14 @@ export class Controller {
         this.apiKey = apiKey;
     }
 
-   
-
     async requestToPay(): Promise<any> {
         const api_key = this.apiKey;
         const amount = this.amount;
         const phone_number = this.phone;
         const apiUrl = `https://daraza.net/api/request_to_pay/`;
-        const csrfToken = (document.head.querySelector("[name~=csrf_token][content]") as HTMLMetaElement).content;
+        
+        // Check for CSRF token, with fallback
+        const csrfToken = (document.head.querySelector("[name~=csrf_token][content]") as HTMLMetaElement)?.content || '';
         console.log(csrfToken, 'csrfToken');
 
         const data = {
@@ -45,14 +45,18 @@ export class Controller {
         try {
             const response = await fetch(apiUrl, requestOptions);
             if (!response.ok) {
-                throw new Error(`${response.statusText} - ${response.status}`);
+                const errorBody = await response.text();
+                throw new Error(`HTTP Error: ${response.status} ${response.statusText} - ${errorBody}`);
             }
             const responseData = await response.json();
             console.log(JSON.stringify(responseData, null, 2));
             return responseData;
         } catch (error) {
-            console.error("Error:", error);
+            console.error("Payment Request Error:", error);
             throw error;
         }
     }
+
+    // Optional: Add method to get transaction status
+    
 }
